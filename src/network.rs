@@ -24,11 +24,7 @@ struct SaveData {
 }
 
 impl Network<'_> {
-    pub fn new(
-        layers: Vec<usize>,
-        learning_rate: f64,
-        activation: Activation,
-    ) -> Network {
+    pub fn new(layers: Vec<usize>, learning_rate: f64, activation: Activation) -> Network {
         let mut weights = vec![];
         let mut biases = vec![];
 

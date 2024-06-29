@@ -52,7 +52,7 @@ impl Matrix {
     pub fn multiply(&self, other: &Matrix) -> Matrix {
         // 如果矩阵的列数不相等，则抛出异常
         if self.cols != other.rows {
-            panic!("Attempted to multiply by matrix of incorrect dimensions");
+            panic!("尝试乘以不正确维度的矩阵");
         }
 
         // 创建一个结果矩阵，并用0填充
@@ -120,14 +120,14 @@ impl Matrix {
         res
     }
 
-    /// Subtracts two matrices element-wise.
+    /// 按元素减去两个矩阵。
     ///
-    /// # Panics
+    /// # 恐慌
     ///
-    /// Panics if the matrices have different dimensions.
+    /// 如果矩阵具有不同的维度，则会感到恐慌。
     pub fn subtract(&self, other: &Matrix) -> Matrix {
         if self.rows != other.rows || self.cols != other.cols {
-            panic!("Attempted to subtract matrix of incorrect dimensions");
+            panic!("尝试减去不正确维度的矩阵");
         }
 
         let mut res = Matrix::zeros(self.rows, self.cols);
@@ -141,7 +141,7 @@ impl Matrix {
         res
     }
 
-      /// Applies a function to each element of the matrix and returns a new matrix with the results.
+    /// 将函数应用于矩阵的每个元素，并返回一个包含结果的新矩阵。
     ///
     /// # Examples
     ///
@@ -154,14 +154,14 @@ impl Matrix {
     /// assert_eq!(doubled, Matrix::from([[2.0, 4.0], [6.0, 8.0]]);
     /// ```
     pub fn map(&self, function: &dyn Fn(f64) -> f64) -> Matrix {
-        // Creates a new matrix from a two-dimensional vector of floating-point numbers.
+        // 从浮点数的二维向量创建新矩阵。
         Matrix::from(
             self.data
                 .clone()
                 .into_iter()
-                //  Maps each element of the row to the result of applying the function.
+                //  将行的每个元素映射到应用函数的结果。
                 .map(|row| row.into_iter().map(|value| function(value)).collect())
-                // Collects the rows into a two-dimensional vector.
+                //将行收集到二维向量中。
                 .collect(),
         )
     }

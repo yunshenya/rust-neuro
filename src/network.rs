@@ -10,11 +10,17 @@ use super::{activations::Activation, matrix::Matrix};
 
 // 定义网络结构体
 pub struct Network<'a> {
+    // 网络层数
     layers: Vec<usize>,
+    // 权重
     weights: Vec<Matrix>,
+    // 偏置
     biases: Vec<Matrix>,
+    // 数据
     data: Vec<Matrix>,
+    // 学习率
     learning_rate: f64,
+    // 激活函数
     activation: Activation<'a>,
 }
 
@@ -33,7 +39,7 @@ impl Network<'_> {
         let mut weights = vec![];
         let mut biases = vec![];
 
-        // Generate random weights and biases for each layer.
+        // 为每一层生成随机权重和偏差。
         for i in 0..layers.len() - 1 {
             weights.push(Matrix::random(layers[i + 1], layers[i]));
             biases.push(Matrix::random(layers[i + 1], 1));
@@ -80,7 +86,7 @@ impl Network<'_> {
     pub fn back_propagate(&mut self, outputs: Vec<f64>, targets: Vec<f64>) {
         // 检查目标长度是否正确
         if targets.len() != self.layers[self.layers.len() - 1] {
-            panic!("Invalid targets length");
+            panic!("无效目标长度");
         }
 
         // 将输出转换为矩阵，并将其转置
@@ -131,7 +137,7 @@ impl Network<'_> {
     /// 保存神经网络到文件
     pub fn save(&self, file: String) {
         // 创建文件
-        let mut file = File::create(file).expect("Unable to touch save file");
+        let mut file = File::create(file).expect("无法触摸保存文件");
 
         // 将权重和偏置写入文件
         file.write_all(

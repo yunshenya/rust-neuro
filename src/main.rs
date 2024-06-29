@@ -20,18 +20,18 @@ fn main() {
 
     println!(
         "{:?}",
-        network.feed_forward(vec![0.0, 0.0]).get(0).unwrap().round()
+        network.feed_forward(vec![0.0, 0.0])
     );
     println!(
         "{:?}",
-        network.feed_forward(vec![0.0, 1.0]).get(0).unwrap().round()
+        network.feed_forward(vec![0.0, 1.0])
     );
     println!(
         "{:?}",
-        network.feed_forward(vec![1.0, 0.0]).get(0).unwrap().round()
+        network.feed_forward(vec![1.0, 0.0])
     );
     println!(
         "{:?}",
-        network.feed_forward(vec![1.0, 1.0]).get(0).unwrap().round()
+        network.feed_forward(vec![1.0, 1.0])
     );
 }

@@ -38,7 +38,7 @@ impl Matrix {
         res
     }
 
-     // 此函数接受 f64 的向量向量并返回一个 Matrix
+    // 此函数接受 f64 的向量向量并返回一个 Matrix
     pub fn from(data: Vec<Vec<f64>>) -> Matrix {
         // 使用输入数据的维度创建一个新矩阵
         Matrix {

@@ -59,7 +59,7 @@ impl Network<'_> {
     pub fn feed_forward(&mut self, inputs: Vec<f64>) -> Vec<f64> {
         // 检查输入长度是否正确
         if inputs.len() != self.layers[0] {
-            panic!("Invalid inputs length");
+            panic!("无效的输入长度");
         }
 
         // 将输入转换为矩阵，并将其转置
@@ -145,21 +145,21 @@ impl Network<'_> {
                 "weights": self.weights.clone().into_iter().map(|matrix| matrix.data).collect::<Vec<Vec<Vec<f64>>>>(),
                 "biases": self.biases.clone().into_iter().map(|matrix| matrix.data).collect::<Vec<Vec<Vec<f64>>>>()
             }).to_string().as_bytes(),
-        ).expect("Unable to write to save file");
+        ).expect("无法写入保存文件");
     }
 
     /// 从文件加载神经网络
     pub fn load(&mut self, file: String) {
         // 打开文件
-        let mut file = File::open(file).expect("Unable to open save file");
+        let mut file = File::open(file).expect("无法打开保存文件");
         let mut buffer = String::new();
 
         // 读取文件内容
         file.read_to_string(&mut buffer)
-            .expect("Unable to read save file");
+            .expect("无法读取保存文件");
 
         // 将文件内容反序列化为SaveData结构体
-        let save_data: SaveData = from_str(&buffer).expect("Unable to serialize save data");
+        let save_data: SaveData = from_str(&buffer).expect("无法序列化保存数据");
 
         // 创建权重和偏置向量
         let mut weights = vec![];

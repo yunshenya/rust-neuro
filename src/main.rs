@@ -23,20 +23,8 @@ fn main() {
     network.train(inputs, targets, 3000);
 
     // 打印输出结果
-    println!(
-        "{:?}",
-        network.feed_forward(vec![0.0, 0.0])
-    );
-    println!(
-        "{:?}",
-        network.feed_forward(vec![0.0, 1.0])
-    );
-    println!(
-        "{:?}",
-        network.feed_forward(vec![1.0, 0.0])
-    );
-    println!(
-        "{:?}",
-        network.feed_forward(vec![1.0, 1.0])
-    );
+    println!("{:?}", network.feed_forward(vec![0.0, 0.0]));
+    println!("{:?}", network.feed_forward(vec![0.0, 1.0]));
+    println!("{:?}", network.feed_forward(vec![1.0, 0.0]));
+    println!("{:?}", network.feed_forward(vec![1.0, 1.0]));
 }

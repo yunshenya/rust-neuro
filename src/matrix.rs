@@ -103,7 +103,7 @@ impl Matrix {
     pub fn dot_multiply(&self, other: &Matrix) -> Matrix {
         // 检查两个矩阵的维度是否相同
         if self.rows != other.rows || self.cols != other.cols {
-            panic!("Attempted to dot multiply by matrix of incorrect dimensions");
+            panic!("尝试点乘以不正确尺寸的矩阵");
         }
 
         // 创建一个结果矩阵，初始化为0

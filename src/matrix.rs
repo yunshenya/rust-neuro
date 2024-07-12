@@ -160,7 +160,7 @@ impl Matrix {
                 .clone()
                 .into_iter()
                 //  将行的每个元素映射到应用函数的结果。
-                .map(|row| row.into_iter().map(|value| function(value)).collect())
+                .map(|row| row.into_iter().map(function).collect())
                 //将行收集到二维向量中。
                 .collect(),
         )
@@ -190,14 +190,14 @@ impl Debug for Matrix {
         write!(
             f,
             "Matrix {{\n{}\n}}",
-            (&self.data)
+            self.data
                 // 遍历矩阵的每一行
-                .into_iter()
+                .iter()
                 // 将每一行转换为字符串
                 .map(|row| "  ".to_string()
                     + &row
                         // 遍历每一行的元素
-                        .into_iter()
+                        .iter()
                         // 将元素转换为字符串
                         .map(|value| value.to_string())
                         // 将字符串元素连接成一个字符串
